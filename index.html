@@ -1,107 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cricket Score App</title>
+    <meta charset="UTF-8">
+    <title>Amazon Clone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            background: #0b3d91;
+        }
+
+        body {
+            background-color: #eaeded;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #131921;
             color: white;
-            text-align: center;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            justify-content: space-between;
         }
 
-        .container {
-            background: #1e5bb8;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            margin: auto;
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff9900;
         }
 
-        h1 {
-            margin-bottom: 10px;
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
         }
 
-        .score {
-            font-size: 40px;
-            margin: 20px 0;
-        }
-
-        button {
-            padding: 10px 15px;
-            margin: 5px;
-            font-size: 16px;
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
             border: none;
-            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            border: none;
+            background: #febd69;
             cursor: pointer;
         }
 
-        .run { background: #28a745; color: white; }
-        .wicket { background: #dc3545; color: white; }
-        .reset { background: #ffc107; color: black; }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links div {
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1400&q=60') no-repeat center center/cover;
+            height: 300px;
+        }
+
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card button {
+            background: #ffd814;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .product-card button:hover {
+            background: #f7ca00;
+        }
+
+        /* Footer */
+        footer {
+            background: #131921;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>🏏 Cricket Score</h1>
-        <h2 id="teamName">Team A</h2>
-        
-        <div class="score">
-            <span id="runs">0</span>/<span id="wickets">0</span>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">amazon</div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search Amazon">
+            <button>Search</button>
         </div>
 
-        <p>Overs: <span id="overs">0.0</span></p>
-
-        <div>
-            <button class="run" onclick="addRun(1)">+1 Run</button>
-            <button class="run" onclick="addRun(4)">+4</button>
-            <button class="run" onclick="addRun(6)">+6</button>
-        </div>
-
-        <div>
-            <button class="wicket" onclick="addWicket()">Wicket</button>
-            <button class="reset" onclick="resetScore()">Reset</button>
+        <div class="nav-links">
+            <div>Hello, Sign in</div>
+            <div>Returns & Orders</div>
+            <div>Cart 🛒</div>
         </div>
     </div>
 
-<script>
-    let runs = 0;
-    let wickets = 0;
-    let balls = 0;
+    <!-- Hero Section -->
+    <div class="hero"></div>
 
-    function addRun(run) {
-        runs += run;
-        balls++;
-        updateScore();
-    }
+    <!-- Products Section -->
+    <div class="products">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=60">
+            <h3>Smartphone</h3>
+            <p>$499.99</p>
+            <button>Add to Cart</button>
+        </div>
 
-    function addWicket() {
-        if (wickets < 10) {
-            wickets++;
-            balls++;
-            updateScore();
-        }
-    }
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=500&q=60">
+            <h3>Headphones</h3>
+            <p>$79.99</p>
+            <button>Add to Cart</button>
+        </div>
 
-    function updateScore() {
-        document.getElementById("runs").innerText = runs;
-        document.getElementById("wickets").innerText = wickets;
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=60">
+            <h3>Laptop</h3>
+            <p>$899.99</p>
+            <button>Add to Cart</button>
+        </div>
 
-        let overs = Math.floor(balls / 6);
-        let remainingBalls = balls % 6;
-        document.getElementById("overs").innerText = overs + "." + remainingBalls;
-    }
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1585386959984-a41552262b99?auto=format&fit=crop&w=500&q=60">
+            <h3>Smart Watch</h3>
+            <p>$199.99</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
 
-    function resetScore() {
-        runs = 0;
-        wickets = 0;
-        balls = 0;
-        updateScore();
-    }
-</script>
+    <!-- Footer -->
+    <footer>
+        © 2026 Amazon Clone | Designed for Learning
+    </footer>
 
 </body>
 </html>
